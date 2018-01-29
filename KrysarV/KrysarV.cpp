@@ -10,7 +10,6 @@
 #include "IPlug_include_in_plug_src.h"
 #include "IControl.h"
 #include "resource.h"
-#include "OctaveDown.h"
 #include "Filter.h"
 #include "Delay.h"
 #include "Tremolo.h"
