@@ -28,8 +28,8 @@ private:
 	double mix;
 };
 
-//A delay of echo works by recording and playing back a given sample over a specified time period
-//I have implemnted this by round-robining two vectors filled with live recordings in real time
+//A delay or echo works by recording and playing back a given sample over a specified time period
+//I have implemented this by round-robining two vectors filled with live recordings in real time
 inline double Delay::DelaySample(double input) {
 	if (i < DelayVector.size() && b == 0) {
 		temp = DelayVector2[i]; 
