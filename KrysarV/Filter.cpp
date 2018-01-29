@@ -22,7 +22,7 @@ Filter::Filter(double inA0, double inA1, double inA2, double inB1, double inB2){
 	this->delay1 = 0.0;
 	this->delay2 = 0.0;
 	this->output = 0.0;
-    this->a0 = inA0;
+    	this->a0 = inA0;
 	this->a1 = inA1;
 	this->a2 = inA2;
 	this->b1 = inB1;
