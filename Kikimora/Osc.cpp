@@ -46,6 +46,7 @@ void Osc::SetWaveform(int inWaveform) {
 	this->waveform = inWaveform;
 }
 
+//Goes through one period of each waveform
 void Osc::Iter() {
 	this->v += this->freq;
 	if (this->v >= 1) {
@@ -53,6 +54,7 @@ void Osc::Iter() {
 	}
 }
 
+//Modulates the pitch of the selected step in the step sequencer
 void Osc::Vibrato() {
 	if (this->vibrato > 1 / this->sampleRate) {
 		this->vibratoIterator += this->vibrato;
