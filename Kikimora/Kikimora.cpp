@@ -3,9 +3,7 @@
 #include "IControl.h"
 #include "resource.h"
 #include "Osc.h"
-#include "Filter.h"
 
-Filter* LowPass;
 Osc* Synth;
 static double IteratorSynthCounter;
 static int SynthPitchIterator, pitchMin, pitchMax;
@@ -87,6 +85,7 @@ Kikimora::Kikimora(IPlugInstanceInfo instanceInfo)
   GetParam(pitch8)->InitInt("", 200, pitchMin, pitchMax, "");
   GetParam(pitch8)->SetShape(1.0);
 
+  //Sets up the synth for a preset sequence
   SUPER_PITCH1 = (int)GetParam(pitch1)->Value();
   SUPER_PITCH2 = (int)GetParam(pitch2)->Value();
   SUPER_PITCH3 = (int)GetParam(pitch3)->Value();
@@ -126,6 +125,7 @@ Kikimora::Kikimora(IPlugInstanceInfo instanceInfo)
 
 Kikimora::~Kikimora() {}
 
+//Main DSP stems from here. Synth is iterated and a sample is generated per sample.
 void Kikimora::ProcessDoubleReplacing(double** input, double** output, int nFrames){
      for(int j = 0; j < nFrames; j++){
 			 IterateSynth();
@@ -135,6 +135,7 @@ void Kikimora::ProcessDoubleReplacing(double** input, double** output, int nFram
   }
 }
 
+//Iterates through each step in the step sequencer
 void Kikimora::IterateSynth() {
 	if (IteratorSynthCounter > 1.0) {
 		IteratorSynthCounter = 0.0;
@@ -143,6 +144,7 @@ void Kikimora::IterateSynth() {
 	IteratorSynthCounter += SUPER_SPEED;
 }
 
+//Iterates pitch through each step in the step sequencer
 void Kikimora::ChangeSynthPitch() {
 	SynthPitchIterator++;
 	switch (SynthPitchIterator) {
